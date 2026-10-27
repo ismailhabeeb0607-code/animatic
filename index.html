@@ -1,0 +1,416 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #fffaf7;
+    color: #b32650;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.page {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.small-title {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    color: #a65a70;
+}
+
+h1 {
+    font-size: clamp(36px, 9vw, 70px);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    background: #b32650;
+    color: white;
+    padding: 14px 27px;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 25px;
+    box-shadow: 0 6px 20px #b3265030;
+    transition: transform .2s;
+}
+
+button:active {
+    transform: scale(.95);
+}
+
+/* Floating heart screen */
+
+.big-heart {
+    font-size: 100px;
+    animation: heartbeat 1.3s infinite;
+    filter: drop-shadow(0 8px 20px #ff729255);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Birthday title screen */
+
+.birthday {
+    background: linear-gradient(145deg, #d8174d, #8e123b);
+    color: white;
+}
+
+.birthday .small-title {
+    color: #ffd4e0;
+}
+
+.birthday h1 {
+    animation: appear 1.5s ease both;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Heart tree */
+
+.tree-area {
+    position: relative;
+    width: min(330px, 90vw);
+    height: 350px;
+    margin: 20px auto;
+}
+
+.trunk {
+    position: absolute;
+    width: 8px;
+    height: 145px;
+    background: linear-gradient(90deg, #70432f, #b47b53);
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 8px;
+}
+
+.branch {
+    position: absolute;
+    width: 5px;
+    background: #916044;
+    bottom: 95px;
+    left: 50%;
+    transform-origin: bottom;
+    border-radius: 5px;
+}
+
+.branch.left {
+    height: 100px;
+    transform: rotate(-38deg);
+}
+
+.branch.right {
+    height: 115px;
+    transform: rotate(38deg);
+}
+
+.leaves {
+    position: absolute;
+    inset: 0;
+}
+
+.leaf {
+    position: absolute;
+    font-size: 21px;
+    animation: leafPop .7s ease both;
+}
+
+@keyframes leafPop {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.love-message {
+    max-width: 440px;
+    margin: 10px auto;
+    padding: 25px;
+    background: #fff0f4;
+    border-radius: 20px;
+    line-height: 1.9;
+    box-shadow: 0 8px 30px #b3265010;
+}
+
+.comment {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #171317;
+    color: white;
+    padding: 13px 8px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.floating {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    animation: floatUp 6s linear forwards;
+    z-index: 10;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .page {
+        padding: 24px 14px;
+    }
+
+    .tree-area {
+        height: 310px;
+        transform: scale(.95);
+        transform-origin: center;
+    }
+
+    .love-message {
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    .comment {
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1: HEART INTRO -->
+<section class="page" id="intro">
+    <div class="small-title">A little surprise for you</div>
+    <div class="big-heart">❤️</div>
+    <h1 style="font-size:36px; margin-top:25px;">
+        Made With Love
+    </h1>
+    <p>Someone special deserves something special...</p>
+    <button onclick="showPage('birthday')">
+        Open Your Surprise 💌
+    </button>
+</section>
+
+<!-- PAGE 2: BIRTHDAY WISH -->
+<section class="page birthday hidden" id="birthday">
+    <div class="small-title">Today is all about you</div>
+    <h1>Happy Birthday<br>My Love ❤️</h1>
+    <p>To the most beautiful person in my world.</p>
+    <button onclick="showPage('tree')">
+        See Your Birthday Gift 🌹
+    </button>
+</section>
+
+<!-- PAGE 3: HEART TREE -->
+<section class="page hidden" id="tree">
+    <div class="small-title">A tree full of love</div>
+    <h1 style="font-size:clamp(30px,7vw,46px)">
+        Happy Birthday
+    </h1>
+
+    <div class="tree-area">
+        <div class="leaves" id="leaves"></div>
+        <div class="branch left"></div>
+        <div class="branch right"></div>
+        <div class="trunk"></div>
+    </div>
+
+    <p>Every heart represents a reason I love you. 💕</p>
+    <button onclick="showPage('message')">
+        One Last Surprise 💖
+    </button>
+</section>
+
+<!-- PAGE 4: PERSONAL MESSAGE -->
+<section class="page hidden" id="message">
+    <div class="big-heart" style="font-size:65px">💗</div>
+    <div class="small-title">A message from my heart</div>
+    <h1 style="font-size:clamp(34px,8vw,55px)">
+        To My Love
+    </h1>
+
+    <div class="love-message">
+        Happy Birthday, my love! ❤️<br><br>
+        You make my world brighter just by being in it.
+        May your day be filled with happiness, laughter,
+        beautiful memories, and endless love.<br><br>
+        No matter what life brings, I hope you always
+        remember how special you are to me.
+        You deserve all the happiness in the world. 💕<br><br>
+        <strong>Forever sending you all my love. ❤️</strong>
+    </div>
+
+    <button onclick="celebrate()">
+        Send You All My Love 🎉
+    </button>
+
+    <p id="finalText" style="margin-top:20px;"></p>
+
+    <div class="comment">
+        COMMENT "LOVE" FOR MORE SURPRISES ❤️
+    </div>
+</section>
+
+<script>
+function showPage(id) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.add("hidden");
+    });
+
+    document.getElementById(id).classList.remove("hidden");
+    window.scrollTo(0, 0);
+
+    if (id === "tree") {
+        createTree();
+    }
+
+    if (id === "birthday" || id === "message") {
+        startHearts();
+    }
+}
+
+let treeCreated = false;
+
+function createTree() {
+    if (treeCreated) return;
+    treeCreated = true;
+
+    const leaves = document.getElementById("leaves");
+    const heartColors = ["❤️", "💗", "💕", "💖", "💓", "🌸"];
+    const centerX = 165;
+    const centerY = 105;
+    const scaleX = 135;
+    const scaleY = 105;
+
+    // Heart-shaped canopy
+    for (let i = 0; i < 100; i++) {
+        const t = Math.random() * Math.PI * 2;
+        const r = Math.sqrt(Math.random());
+
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = 13 * Math.cos(t)
+                - 5 * Math.cos(2*t)
+                - 2 * Math.cos(3*t)
+                - Math.cos(4*t);
+
+        const leaf = document.createElement("span");
+        leaf.className = "leaf";
+        leaf.textContent =
+            heartColors[Math.floor(Math.random() * heartColors.length)];
+
+        leaf.style.left =
+            (centerX + (x / 17) * scaleX * r) + "px";
+
+        leaf.style.top =
+            (centerY - (y / 17) * scaleY * r) + "px";
+
+        leaf.style.fontSize = (12 + Math.random() * 12) + "px";
+        leaf.style.animationDelay = (Math.random() * 1.2) + "s";
+
+        leaves.appendChild(leaf);
+    }
+}
+
+let heartTimer;
+
+function startHearts() {
+    if (heartTimer) return;
+
+    heartTimer = setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "floating";
+        heart.textContent = ["❤️", "💗", "💕", "💖"][
+            Math.floor(Math.random() * 4)
+        ];
+
+        heart.style.left = Math.random() * 95 + "vw";
+        heart.style.fontSize = (16 + Math.random() * 22) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 8000);
+    }, 500);
+}
+
+function celebrate() {
+    startHearts();
+
+    document.getElementById("finalText").textContent =
+        "🎉 Happy Birthday, my favorite person! I love you! ❤️";
+
+    // Extra burst of hearts
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const heart = document.createElement("div");
+            heart.className = "floating";
+            heart.textContent = ["❤️", "💖", "💝", "💕"][
+                Math.floor(Math.random() * 4)
+            ];
+            heart.style.left = Math.random() * 95 + "vw";
+            heart.style.fontSize = (20 + Math.random() * 25) + "px";
+            heart.style.animationDuration = "4s";
+
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4500);
+        }, i * 80);
+    }
+}
+</script>
+
+</body>
+</html>
